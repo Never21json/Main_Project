@@ -36,7 +36,7 @@ API_KEY = "25f5388b3415282b4f428c7273effef0"
 CITY = "Lytsk"
 API_URL = f"https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_KEY}&units=metric&lang=uk"
 
-pizza_menu = [
+pizza_menu = [/
     {
         "name": "Маргарита",
         "ingredients": "Томати, Моцарела, Базилік",
@@ -60,7 +60,7 @@ pizza_menu = [
     {
         "name": "Вегетаріанська",
         "ingredients": "Болгарський перець, Гриби, Оливки, Цибуля, Моцарела",
-        "price": 9.99,
+        
     },
 ]
 
