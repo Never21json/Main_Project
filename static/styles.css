@@ -1,0 +1,35 @@
+/* Світла тема */
+[data-bs-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+}
+
+/* Темна тема */
+[data-bs-theme="dark"] {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Додаткові стилі для таблиці та інших елементів */
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+    color: var(--text-color);
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}

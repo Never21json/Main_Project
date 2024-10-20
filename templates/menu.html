@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню Піц</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 50px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .filter-container {
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Меню Піц</h1>
+
+    <a href="{{ url_for('add_item') }}">Додати страву</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Назва Піци</th>
+                <th>Інгредієнти</th>
+                <th>Ціна</th>
+                <th>Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pizza in pizzas|sort(attribute='price') %}
+            <tr>
+                <td>{{ pizza.name }}</td>
+                <td>{{ pizza.ingredients }}</td>
+                <td>{{ pizza.price }} грн</td>
+                <td>
+                    <a href="{{ url_for('edit_item', id=pizza.id) }}">Редагувати</a> |
+                    <form action="{{ url_for('delete_item', id=pizza.id) }}" method="POST" style="display:inline;">
+                        <button type="submit">Видалити</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Список піц</h2>
+    <ul>
+        {% for pizza in pizzas %}
+        <li>{{ pizza.name }}: {{ pizza.price }} грн</li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

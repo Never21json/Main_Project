@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlaskBlog</title>
+</head>
+<body>
+    <h1>FlaskBlog - Список постів</h1>
+
+    <a href="{{ url_for('new_post') }}">Створити новий пост</a>
+
+    <ul>
+        {% if posts %}
+            {% for post in posts %}
+                <li>
+                    <strong>{{ post.title }}</strong> - {{ post.date_posted.strftime('%Y-%m-%d') }}
+                    <a href="{{ url_for('edit_post', id=post.id) }}">Редагувати</a>
+                    <form action="{{ url_for('delete_post', id=post.id) }}" method="POST" style="display:inline;">
+                        <button type="submit">Видалити</button>
+                    </form>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>Немає постів для відображення.</li>
+        {% endif %}
+    </ul>
+</body>
+</html>
