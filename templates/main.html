@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Динамічне сортування з Flask</title>
+</head>
+<body>
+    <h1>Динамічне сортування вмісту</h1>
+    <button id="sortButton" onclick="toggleSortOrder()">Змінити порядок сортування</button>
+    <ul id="itemList"></ul>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

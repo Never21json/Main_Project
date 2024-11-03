@@ -172,6 +172,19 @@ def about():
 def page_not_found(error):
     return render_template("404.html"), 404
 
+@app.route('/results')
+def results_page():
+    return render_template("results.html", results=results)
+    
+@app.route("/main")
+def main():
+    return render_template("main.html")
+
+@app.route('/update_content', methods=['POST'])
+def update_content():
+    sort_order = request.json.get('order')
+    sorted_items = sorted(items, key=lambda x: x["name"], reverse=(order == 'desc'))
+    return jsonify(sorted_items)
 
 if __name__ == "__main__":
     app.run(debug=True)

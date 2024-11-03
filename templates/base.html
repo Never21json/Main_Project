@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="uk">
+{% set mode = request.args.get('mode') %}
+<html lang="uk" data-bs-theme="{{ 'dark' if mode == 'dark' else 'light' }}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,25 +15,30 @@
             background-color: #f4f4f4;
             color: #333;
         }
+
         header {
             background-color: #333;
             color: #fff;
             padding: 10px 0;
         }
+
         header nav ul {
             list-style-type: none;
             padding: 0;
             text-align: center;
         }
+
         header nav ul li {
             display: inline;
             margin-right: 20px;
         }
+
         header nav ul li a {
             color: #fff;
             text-decoration: none;
             font-weight: bold;
         }
+
         main {
             padding: 20px;
             background-color: #fff;
@@ -39,6 +46,7 @@
             margin: 20px auto;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
         footer {
             text-align: center;
             padding: 10px 0;
@@ -50,6 +58,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
@@ -61,13 +70,22 @@
             </ul>
         </nav>
     </header>
-    
+
+    <div class="theme-switch">
+        {% if mode == "dark" %}
+        <a href="{{ request.path }}">Switch to Light Mode</a>
+        {% else %}
+        <a href="{{ request.path }}?mode=dark">Switch to Dark Mode</a>
+        {% endif %}
+    </div>
+
     <main>
         {% block content %}{% endblock %}
     </main>
-    
+
     <footer>
         <p>&copy; 2024 Oderman. All rights reserved.</p>
     </footer>
 </body>
+
 </html>

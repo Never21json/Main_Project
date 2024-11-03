@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Опитування: Яка страва подобається найбільше?</h1>
+    <form method="post">
+        <label for="dish">Виберіть страву:</label>
+        <select name="dish" id="dish">
+            <option value="Pizza Margherita">Pizza Margherita</option>
+            <option value="Pizza Pepperoni">Pizza Pepperoni</option>
+            <option value="Carbonara">Carbonara</option>
+        </select>
+        <button type="submit">Проголосувати</button>
+    </form>
+    <a href="{{ url_for('survey_results') }}">Переглянути результати</a>
+{% endblock %}
